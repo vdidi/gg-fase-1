@@ -5,5 +5,5 @@ Para rodar o programa é necessário rodar os seguintes comandos:
 
 ```sh
 $ mvn package
-$ mvn -jar target/listar_arquivos.jar
+$ java -jar target/listar_arquivos.jar
 ```
