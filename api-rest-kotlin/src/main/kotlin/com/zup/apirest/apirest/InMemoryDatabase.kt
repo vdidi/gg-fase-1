@@ -12,7 +12,7 @@ class InMemoryDatabase {
         return ArrayList(database.values)
     }
 
-    fun vasualizarPorCPF(cpf: String): Optional<Pessoa> {
+    fun visualizarPorCPF(cpf: String): Optional<Pessoa> {
         return Optional.ofNullable(database[cpf])
     }
 
@@ -21,29 +21,25 @@ class InMemoryDatabase {
         return pessoa
     }
 
-    fun atualizar(cpf: String, pessoa: Pessoa): Pessoa {
+    fun atualizar(cpf: String, pessoa: Pessoa): Boolean {
         if (database.get(pessoa.cpf) != null) {
             database.put(pessoa.cpf, pessoa)
+            return true
         }
-        println(pessoa)
-        return pessoa
+        return false
     }
 
-    fun deletar(id: String): Unit? {
+    fun deletar(id: String): Boolean {
         if (database[id] != null) {
             database.remove(id)
+            return true
         }
-        return null
+        return false
     }
 
     companion object {
 
         private val database = HashMap<String, Pessoa>()
 
-        init {
-            database["15447424011"] = Pessoa("15447424011", "João")
-            database["57561822090"] = Pessoa("57561822090", "Pedro")
-            database["32613535032"] = Pessoa("32613535032", "Maria")
-        }
     }
 }
